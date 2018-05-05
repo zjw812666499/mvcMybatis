@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mvcmybatis.user.dao.UserDao">
+	<!-- 查询用户列表 -->
+	<select id="findByUsername" 
+	    resultType="mvcmybatis.user.entity.User">
+		select
+			id,
+			username,
+			email,
+			pwd,
+			valid,
+			createdate
+		from
+			user
+		<where>
+			<if test="username!=null and username!=''">
+				username =#{username} 
+			</if>
+		</where>
+	</select>	
+</mapper>
